@@ -1,0 +1,24 @@
+# Generated data and outputs
+data/
+outputs/
+
+# Large geospatial files, in case they are created outside the ignored folders
+*.tif
+*.tiff
+*.vrt
+*.gpkg
+*.aux.xml
+*.ovr
+
+# R session files
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Temporary archives
+*.zip
