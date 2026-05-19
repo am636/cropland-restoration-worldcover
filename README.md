@@ -34,35 +34,7 @@ The restoration opportunity index is calculated for cropland cells only. It comb
 
 The scenario selects the top 10% of cropland cells according to this index and changes them to `grass_shrub`, used here as a simple open semi-natural land-cover proxy.
 
-## Main outputs
-
-Generated rasters are written to `data/processed/`. Summary tables and figures are written to `outputs/`.
-
-Key outputs include:
-
-```text
-outputs/tables/landcover_broad_area_summary.csv
-outputs/tables/landcover_broad_difference_summary_2020_2021.csv
-outputs/tables/spatial_covariate_summary_2021.csv
-outputs/tables/restoration_scenario_area_2021.csv
-outputs/tables/restoration_scenario_summary_2021.csv
-outputs/figures/cropland_restoration_opportunity_index_2021.png
-outputs/figures/restoration_context_index_difference_2021.png
-```
-
-The `data/` and `outputs/` folders are generated locally and ignored by Git.
-
-## Requirements
-
-```r
-install.packages(c("terra", "sf", "dplyr", "readr", "tibble"))
-```
-
-## Notes
-
-The workflow uses ESA WorldCover 10 m products for 2020 and 2021. These products use different versions, so the 2020-2021 comparison is included as a descriptive workflow step rather than a validated land-cover change analysis.
-
-The restoration scenario is a rule-based screening example. It does not include field validation, land ownership, agricultural feasibility, soil, slope, habitat condition or species data.
+The 2020-2021 comparison is descriptive rather than a validated land-cover change analysis, because the two ESA WorldCover products use different versions. The restoration scenario is also a rule-based screening example and does not include field validation, land ownership, agricultural feasibility, soil, slope, habitat condition or species data.
 
 ## Data citation
 
