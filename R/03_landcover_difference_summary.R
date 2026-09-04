@@ -7,7 +7,7 @@ library(dplyr)
 
 
 # User settings
-aoi_name <- "east_fife_demo"
+aoi_name <- "east_fife"
 from_year <- 2020
 to_year <- 2021
 year_label <- paste0(from_year, "_", to_year)
@@ -180,7 +180,7 @@ legend(
 dev.off()
 
 note <- c(
-  "Broad class differences are summarised for workflow demonstration.",
+  "Broad class differences are summarised for this screening analysis.",
   "They should not be treated as field-validated land-cover change."
 )
 

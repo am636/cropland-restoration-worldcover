@@ -6,7 +6,7 @@ library(readr)
 library(tibble)
 
 # User settings
-aoi_name <- "east_fife_demo"
+aoi_name <- "east_fife"
 input_year <- 2021
 
 target_res <- 10
@@ -318,7 +318,7 @@ settings <- tibble(
     as.character(window_m),
     as.character(scenario_fraction),
     "top-ranked cropland candidate cells by baseline restoration opportunity index",
-    "scenario is a rule-based demonstration, not a restoration recommendation"
+    "scenario is a illustrative rule-based scenario, not a restoration recommendation"
   )
 )
 
@@ -346,7 +346,7 @@ plot_raster <- function(x, file, title) {
 plot_raster(
   selected_plot,
   sprintf("outputs/figures/restoration_selected_cells_%s.png", input_year),
-  "Selected cropland cells for demonstration scenario"
+  "Selected cropland cells for illustrative screening scenario"
 )
 
 plot_raster(

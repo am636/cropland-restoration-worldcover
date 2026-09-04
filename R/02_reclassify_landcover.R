@@ -7,7 +7,7 @@ library(dplyr)
 
 
 # User settings
-aoi_name <- "east_fife_demo"
+aoi_name <- "east_fife"
 years <- c(2020, 2021)
 
 
