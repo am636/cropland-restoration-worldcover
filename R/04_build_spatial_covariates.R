@@ -6,7 +6,7 @@ library(readr)
 library(tibble)
 
 # User settings
-aoi_name <- "east_fife_demo"
+aoi_name <- "east_fife"
 input_year <- 2021
 
 out_crs <- "EPSG:27700"
