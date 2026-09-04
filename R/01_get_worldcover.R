@@ -9,7 +9,7 @@ library(tibble)
 
 
 # User settings
-aoi_name <- "east_fife_demo"
+aoi_name <- "east_fife"
 
 aoi_bbox <- c(
   xmin = -2.98,
