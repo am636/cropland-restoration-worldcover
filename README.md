@@ -1,12 +1,12 @@
-# Cropland restoration opportunity mapping with ESA WorldCover
+# Cropland restoration screening in East Fife with ESA WorldCover
 
-A compact R workflow using ESA WorldCover land-cover data to build a simple cropland restoration screening workflow for East Fife, Scotland.
+This repository contains a compact R case study using ESA WorldCover data to explore where cropland in East Fife, Scotland, is located in relation to semi-natural cover, water and built-up land.
 
-The project demonstrates raster data handling, land-cover reclassification, spatial covariate engineering and rule-based scenario comparison in R. It is a reproducible portfolio workflow, not a field-validated restoration model or site-level land-management recommendation.
+The analysis is intentionally simple. It combines land-cover reclassification, local spatial context and distance-based covariates to build an illustrative cropland-restoration screening index, then compares the baseline landscape with a scenario in which the highest-ranked cropland cells are reassigned to a grass/shrub class.
 
 ## Workflow
 
-The scripts should be run from the repository root in order:
+Run the scripts from the repository root in order:
 
 ```r
 source("R/01_get_worldcover.R")
@@ -16,28 +16,51 @@ source("R/04_build_spatial_covariates.R")
 source("R/05_make_restoration_scenario.R")
 ```
 
-The workflow:
+The scripts:
 
-1. downloads and crops ESA WorldCover 2020 and 2021 data for a small East Fife study area;
-2. reclassifies the original WorldCover classes into broader land-cover groups;
-3. summarises broad land-cover differences between 2020 and 2021;
-4. builds spatial covariates from the 2021 broad land-cover map;
-5. ranks cropland cells using a transparent restoration opportunity index;
-6. converts the top-ranked cropland cells to a grass/shrub proxy in a demonstration scenario;
-7. compares baseline and scenario landscape context.
+1. download and crop ESA WorldCover 2020 and 2021 data for East Fife;
+2. reclassify the original WorldCover legend into broader land-cover groups;
+3. summarise differences between the two annual products;
+4. derive local semi-natural cover, built-up context and distance covariates;
+5. calculate a transparent restoration-screening score for cropland cells;
+6. select the top-ranked 10% of candidate cropland cells for an illustrative scenario;
+7. compare baseline and scenario landscape context.
 
-## Method summary
+## Land-cover groups
 
-WorldCover classes are grouped into six broad classes: `tree_cover`, `grass_shrub`, `cropland`, `built_up`, `bare_sparse` and `water_wetland`.
+The original WorldCover classes are grouped into six broader classes:
 
-The restoration opportunity index is calculated for cropland cells only. It combines local semi-natural cover, closeness to existing semi-natural cover, closeness to water or wetland, and low local built-up cover. The weights are transparent assumptions for demonstration, not fitted model coefficients.
+- tree cover
+- grass/shrub
+- cropland
+- built-up
+- bare/sparse
+- water/wetland
 
-The scenario selects the top 10% of cropland cells according to this index and changes them to `grass_shrub`, used here as a simple open semi-natural land-cover proxy.
+## Screening index
 
-The 2020-2021 comparison is descriptive rather than a validated land-cover change analysis, because the two ESA WorldCover products use different versions. The restoration scenario is also a rule-based screening example and does not include field validation, land ownership, agricultural feasibility, soil, slope, habitat condition or species data.
+The cropland screening score combines:
 
-## Data citation
+- local semi-natural cover;
+- distance to existing semi-natural cover;
+- distance to water or wetland;
+- low local built-up cover.
 
-Zanaga, D. et al. (2021). ESA WorldCover 10 m 2020 v100. doi:10.5281/zenodo.5571936.
+The weights are explicit assumptions rather than fitted coefficients. They can be changed in `R/04_build_spatial_covariates.R`.
 
-Zanaga, D. et al. (2022). ESA WorldCover 10 m 2021 v200. doi:10.5281/zenodo.7254221.
+## Interpretation
+
+The 2020 and 2021 WorldCover products use different product versions, so the comparison should be treated as descriptive rather than as a validated land-cover-change analysis.
+
+The scenario is also illustrative. It does not include land ownership, agricultural feasibility, soils, slope, habitat condition, species requirements or field validation, so it should not be interpreted as a site-level restoration recommendation.
+
+## Data
+
+ESA WorldCover 10 m 2020 v100: Zanaga, D. et al. (2021), DOI 10.5281/zenodo.5571936.
+
+ESA WorldCover 10 m 2021 v200: Zanaga, D. et al. (2022), DOI 10.5281/zenodo.7254221.
+
+Generated rasters, tables and figures are written to local `data/` and `outputs/` folders and are not versioned.
+
+**Author:** Ali Moayedi  
+University of St Andrews
